@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的网页</title>
+    <style>
+        /* 设置网页的背景颜色为白色 */
+        body {
+            background-color: white;
+        }
+
+        /* 设置上传按钮的样式 */
+        .upload-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: green;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* 设置上传按钮的悬停效果 */
+        .upload-btn:hover {
+            background-color: limegreen;
+        }
+
+        /* 设置文件名的样式 */
+        .file-name {
+            display: inline-block;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <h1>欢迎来到我的网页</h1>
+    <p>这是一个简单的示例，展示了如何使用HTML，CSS和JavaScript创建一个带有绿色上传按钮的网页。</p>
+    <div>
+        <!-- 使用label标签包裹input标签，实现自定义的上传按钮 -->
+        <label for="file-input" class="upload-btn">选择文件</label>
+        <input type="file" id="file-input" hidden>
+        <!-- 使用span标签显示文件名 -->
+        <span class="file-name">未选择文件</span>
+    </div>
+    <script>
+        // 获取文件输入框和文件名元素
+        var fileInput = document.getElementById("file-input");
+        var fileName = document.getElementsByClassName("file-name")[0];
+
+        // 监听文件输入框的变化事件
+        fileInput.addEventListener("change", function() {
+            // 如果有选择文件，就获取文件名，否则显示未选择文件
+            if (fileInput.files.length > 0) {
+                fileName.textContent = fileInput.files[0].name;
+            } else {
+                fileName.textContent = "未选择文件";
+            }
+        });
+    </script>
+</body>
+</html>
