@@ -62,3 +62,33 @@
     </script>
 </body>
 </html>
+<!-- 在HTML文件中插入JavaScript代码 -->
+<script>
+  // 获取文件输入框和文件名元素
+var fileInput = document.getElementById("file-input");
+var fileName = document.getElementsByClassName("file-name")[0];
+
+// 监听文件输入框的变化事件
+fileInput.addEventListener("change", function() {
+    // 如果有选择文件，就获取文件名，否则显示未选择文件
+    if (fileInput.files.length > 0) {
+        var file = fileInput.files[0]; // 获取第一个文件
+        var name = file.name; // 获取文件名
+        var type = file.type; // 获取文件类型
+        var ext = name.split(".").pop().toLowerCase(); // 获取文件扩展名
+        var validExts = ["jpg", "jpeg", "png", "gif"]; // 定义允许的扩展名
+        var validTypes = ["image/jpeg", "image/png", "image/gif"]; // 定义允许的类型
+        // 检查文件扩展名和类型是否在允许的范围内
+        if (validExts.includes(ext) && validTypes.includes(type)) {
+            fileName.textContent = name; // 显示文件名
+        } else {
+            alert("请选择图片文件"); // 提示错误
+            fileInput.value = ""; // 清空文件输入框
+            fileName.textContent = "未选择文件"; // 显示未选择文件
+        }
+    } else {
+        fileName.textContent = "未选择文件"; // 显示未选择文件
+    }
+});
+
+</script>
